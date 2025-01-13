@@ -1,10 +1,11 @@
-import About from "./About";
-import Hero from "./Hero";
-import Services from "./Services";
-import DegitalS from "./DegitalS";
-import Contact from "./Contact";
-import Questions from "./Quetions";
-import Counts from "./Counts";
+import About from "../Home/About";
+import Hero from "../Home/Hero";
+import Services from "../Home/Services";
+import DegitalS from "../Home/DegitalS";
+import Contact from "../Home/Contact";
+import Questions from "../Home/Quetions";
+import Counts from "../Home/Counts";
+import Footer from "../Home/Footer";
 
 function Home() {
     return (
@@ -36,12 +37,12 @@ function Home() {
               <div className="testimonial-item">
                 <p>
                   <i className="bx bxs-quote-alt-left quote-icon-left" />
-                  Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
+                  Un groupe de jeunes motivés et ambitieux a fondé ConvergeInnov.
                   <i className="bx bxs-quote-alt-right quote-icon-right" />
                 </p>
-                <img src="assets/img/testimonials/testimonials-1.jpg" className="testimonial-img" alt />
-                <h3>Saul Goodman</h3>
-                <h4>Ceo &amp; Founder</h4>
+                <img src="assets/img/testimonials/testimonials-1.jpg" className="testimonial-img" alt="" />
+                <h3>groupe de jeunes</h3>
+                
               </div>
             </div>{/* End testimonial item */}
            
@@ -57,9 +58,10 @@ function Home() {
     {/* ======= Contact Section ======= */}
     <Contact/>
   {/* End Contact Section */}
+  <Footer/>
   </main>{/* End #main */}</div>
 
-
+  
     );
   }
   

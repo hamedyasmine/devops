@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import AboutItem from '../components/AboutItem'; // Assuming they are in the same directory
+import AboutItem from '../../components/AboutItem'; // Assuming they are in the same directory
 
 function About() {
   const [about, setAbout] = useState([]);
@@ -33,7 +33,7 @@ function About() {
                  <AboutItem title={about.title} description={about.description} index={index}/> 
                 ))}
       
-            <a href="#" className="read-more">Read More <i className="bi bi-long-arrow-right" /></a>
+            <br/><a href="#features" className="read-more">Digital Solutions <i className="bi bi-long-arrow-right" /></a>
           </div>
         </div>
       </div>

@@ -1,5 +1,5 @@
 import React from "react";
-import DegitalItem from "../components/DegitalItem";
+import DegitalItem from "../../components/DegitalItem";
 
 function DigitalS() {
   return (

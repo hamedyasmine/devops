@@ -138,7 +138,7 @@ h6 {
 }
 
 #header .logo a {
-  color: #fff;
+  color: #150677;
 }
 
 #header .logo img {
@@ -151,24 +151,24 @@ h6 {
 /**
 * Desktop Navigation 
 */
-.navbar {
-  padding: 0;
-}
+/* Navbar styling */
 
-.navbar ul {
-  margin: 0;
-  padding: 0;
-  display: flex;
-  list-style: none;
-  align-items: center;
-}
 
-.navbar li {
-  position: relative;
-}
 
-.navbar>ul>li {
-  padding: 10px 0 10px 24px;
+/* Initialement transparent */
+
+/* Autres styles pour la navbar */
+
+
+
+
+/* Change la couleur du texte lorsque .scrolled est active */
+header.scrolled  {
+  
+  background-color: white;
+}
+header.scrolled .navbar a {
+  color: #073260; /* Nouvelle couleur du texte */
 }
 
 .navbar a,
@@ -176,146 +176,23 @@ h6 {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 3px;
+  padding: 0 10px;
   font-family: "Poppins", sans-serif;
-  font-size: 15px;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.7);
+  font-size: 20px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 255);
   white-space: nowrap;
-  transition: 0.3s;
+  transition: 0.9s;
   position: relative;
+  height: 10px; 
 }
 
-.navbar a i,
-.navbar a:focus i {
-  font-size: 12px;
-  line-height: 0;
-  margin-left: 5px;
-}
-
-.navbar>ul>li>a:before {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 2px;
-  bottom: -5px;
-  left: 0;
-  background-color: #fff;
-  visibility: hidden;
-  width: 0px;
-  transition: all 0.3s ease-in-out 0s;
-}
-
-.navbar a:hover:before,
-.navbar li:hover>a:before,
-.navbar .active:before {
-  visibility: visible;
-  width: 100%;
-}
-
-.navbar a:hover,
-.navbar .active,
-.navbar .active:focus,
-.navbar li:hover>a {
-  color: #fff;
-}
-
-.navbar .getstarted,
-.navbar .getstarted:focus {
-  padding: 8px 25px;
-  margin-left: 30px;
-  border-radius: 5px;
-  color: #fff;
-  transition: 0.3s;
-  font-size: 14px;
-  font-weight: 600;
-  border: 2px solid rgba(255, 255, 255, 0.5);
-}
-
-.navbar .getstarted:hover,
-.navbar .getstarted:focus:hover {
-  color: #fff;
-  border-color: #fff;
-}
-
-.navbar .getstarted:before,
-.navbar li:hover>.getstarted:before {
-  visibility: hidden;
-}
-
-.navbar .dropdown ul {
-  display: block;
-  position: absolute;
-  left: 24px;
-  top: calc(100% + 30px);
-  margin: 0;
-  padding: 10px 0;
-  z-index: 99;
-  opacity: 0;
-  visibility: hidden;
-  background: #fff;
-  box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
-  transition: 0.3s;
-}
-
-.navbar .dropdown ul li {
-  min-width: 200px;
-}
-
-.navbar .dropdown ul a {
-  padding: 10px 20px;
-  font-size: 14px;
-  color: #2c4964;
-}
-
-.navbar .dropdown ul a i {
-  font-size: 12px;
-}
-
-.navbar .dropdown ul a:hover,
-.navbar .dropdown ul .active:hover,
-.navbar .dropdown ul li:hover>a {
-  color: #5846f9;
-}
-
-.navbar .dropdown:hover>ul {
-  opacity: 1;
-  top: 100%;
-  visibility: visible;
-}
-
-.navbar .dropdown .dropdown ul {
-  top: 0;
-  left: calc(100% - 30px);
-  visibility: hidden;
-}
-
-.navbar .dropdown .dropdown:hover>ul {
-  opacity: 1;
-  top: 0;
-  left: 100%;
-  visibility: visible;
-}
-
-@media (max-width: 1366px) {
-  .navbar .dropdown .dropdown ul {
-    left: -90%;
-  }
-
-  .navbar .dropdown .dropdown:hover>ul {
-    left: -100%;
-  }
-}
 
 /**
 * Mobile Navigation 
 */
 .mobile-nav-toggle {
-  color: #fff;
-  font-size: 28px;
-  cursor: pointer;
   display: none;
-  line-height: 0;
   transition: 0.5s;
 }
 
@@ -329,98 +206,8 @@ h6 {
   }
 }
 
-.navbar-mobile {
-  position: fixed;
-  overflow: hidden;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  background: rgba(28, 47, 65, 0.9);
-  transition: 0.3s;
-  z-index: 999;
-}
 
-.navbar-mobile .mobile-nav-toggle {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-}
 
-.navbar-mobile ul {
-  display: block;
-  position: absolute;
-  top: 55px;
-  right: 15px;
-  bottom: 15px;
-  left: 15px;
-  padding: 10px 0;
-  background-color: #fff;
-  overflow-y: auto;
-  transition: 0.3s;
-}
-
-.navbar-mobile>ul>li {
-  padding: 0;
-}
-
-.navbar-mobile a,
-.navbar-mobile a:focus {
-  padding: 10px 20px;
-  font-size: 15px;
-  color: #2c4964;
-}
-
-.navbar-mobile a:hover:before,
-.navbar-mobile li:hover>a:before,
-.navbar-mobile .active:before {
-  visibility: hidden;
-}
-
-.navbar-mobile a:hover,
-.navbar-mobile .active,
-.navbar-mobile li:hover>a {
-  color: #5846f9;
-}
-
-.navbar-mobile .getstarted,
-.navbar-mobile .getstarted:focus {
-  margin: 15px;
-}
-
-.navbar-mobile .dropdown ul {
-  position: static;
-  display: none;
-  margin: 10px 20px;
-  padding: 10px 0;
-  z-index: 99;
-  opacity: 1;
-  visibility: visible;
-  background: #fff;
-  box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
-}
-
-.navbar-mobile .dropdown ul li {
-  min-width: 200px;
-}
-
-.navbar-mobile .dropdown ul a {
-  padding: 10px 20px;
-}
-
-.navbar-mobile .dropdown ul a i {
-  font-size: 12px;
-}
-
-.navbar-mobile .dropdown ul a:hover,
-.navbar-mobile .dropdown ul .active:hover,
-.navbar-mobile .dropdown ul li:hover>a {
-  color: #5846f9;
-}
-
-.navbar-mobile .dropdown>.dropdown-active {
-  display: block;
-}
 
 /*--------------------------------------------------------------
 # Hero Section
@@ -670,19 +457,9 @@ section {
   text-align: center;
   padding: 10px 10px 10px 10px;
   transition: all ease-in-out 0.3s;
-  background: #fff;
+  background: #b1acdb;
 }
 
-.services .icon-box .icon {
-  margin: 0 auto;
-  width: 80px;
-  height: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: ease-in-out 0.3s;
-  position: relative;
-}
 
 
 
@@ -704,7 +481,7 @@ section {
 }
 
 .services .icon-box h4 a {
-  color: #2c4964;
+  color: #41109c;
   transition: ease-in-out 0.3s;
 }
 
@@ -714,9 +491,11 @@ section {
   margin-bottom: 0;
 }
 
-.services .icon-box:hover {
-  border-color: #fff;
-  box-shadow: 0px 0 25px 0 rgba(0, 0, 0, 0.1);
+/* Exemple de style pour changer la couleur du curseur au survol */
+.icon-box:hover {
+  border-color: #3498db; /* Couleur de bordure au survol */
+  background-color: #f8f9fa; /* Couleur de fond au survol */
+  cursor: pointer; /* Curseur de type pointer au survol */
 }
 
 .services .iconbox-blue i {
@@ -988,7 +767,7 @@ section {
 }
 
 .portfolio .portfolio-wrap .portfolio-info p {
-  color: #ffffff;
+  color: #f8f5f5;
   font-size: 14px;
   text-transform: uppercase;
 }
@@ -1257,46 +1036,53 @@ section {
   cursor: pointer;
 }
 
-.faq .faq-list .icon-help {
-  font-size: 24px;
-  position: absolute;
-  right: 0;
-  left: 20px;
-  color: #8577fb;
+
+
+/* Exemple de style pour les icônes */
+.icon-show {
+  font-size: 24px; /* Taille de l'icône */
+  margin-left: auto; /* Pour aligner l'icône à droite */
+  transition: transform 0.3s ease; /* Transition pour l'effet de rotation */
 }
 
-.faq .faq-list .icon-show,
-.faq .faq-list .icon-close {
-  font-size: 24px;
-  position: absolute;
-  right: 0;
-  top: 0;
+.bx-chevron-down {
+  transform: rotate(0deg); /* Rotation de 0 degrés (flèche vers le bas par défaut) */
 }
 
-.faq .faq-list p {
-  margin-bottom: 0;
-  padding: 10px 0 0 0;
+.bx-chevron-up {
+  transform: rotate(180deg); /* Rotation de 180 degrés (flèche vers le haut pour la fermeture) */
 }
 
-.faq .faq-list .icon-show {
-  display: none;
+/* Style ajusté pour QuestionsItem */
+.question {
+  margin-bottom: 10px; /* Réduire la marge entre les questions */
 }
 
-.faq .faq-list a.collapsed {
-  color: #2c4964;
+.question-header {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 15px; /* Réduire la taille du padding */
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  border-radius: 5px;
 }
 
-.faq .faq-list a.collapsed:hover {
-  color: #5846f9;
+.question-header h4 {
+  flex: 1;
+  margin: 0;
+  font-size: 16px; /* Taille de police réduite */
 }
 
-.faq .faq-list a.collapsed .icon-show {
-  display: inline-block;
+.answer {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #fafafa;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px; /* Taille de police réduite pour la réponse */
 }
 
-.faq .faq-list a.collapsed .icon-close {
-  display: none;
-}
 
 @media (max-width: 1200px) {
   .faq .faq-list {
@@ -1313,6 +1099,7 @@ section {
   box-shadow: 0 0 30px rgba(214, 215, 216, 0.6);
   padding: 20px 0 30px 0;
   background: #fff;
+  height: 100%;
 }
 
 .contact .info-box i {
@@ -1506,7 +1293,7 @@ section {
   padding: 2px 0 2px 0;
   line-height: 1;
   font-weight: 500;
-  text-transform: uppercase;
+  
 }
 
 #footer .footer-top .footer-contact p {
@@ -1534,10 +1321,14 @@ section {
 }
 
 #footer .footer-top .footer-links ul i {
-  padding-right: 2px;
+  padding-right: 1px;
   color: #fff;
   font-size: 18px;
   line-height: 1;
+}
+.icon {
+  font-size: 3rem; /* Taille personnalisée des icônes */
+  /* Ajoutez d'autres styles au besoin */
 }
 
 #footer .footer-top .footer-links ul li {
@@ -1643,6 +1434,14 @@ section {
   color: #fff;
   text-decoration: none;
 }
+.footer-logo {
+  max-width: 200px; /* Ajustez la taille maximale du logo selon vos besoins */
+  height: auto; /* Permet au logo de conserver ses proportions */
+  display: block; /* Pour éviter les marges supplémentaires */
+  margin: 0 auto;
+  margin-top: 90px; /* Centre le logo horizontalement */
+}
+
 .phrase {
   opacity: 0;
   transition: opacity 1s ease; /* Transition douce de l'opacité */
@@ -1651,3 +1450,91 @@ section {
 .phrase.visible {
   opacity: 1;
 }
+/* login.css (ou tout autre nom de votre choix) */
+
+.login-container {
+  max-width: 600px;
+  max-height: 450px;
+  margin: 90px auto 90px; /* margin: top right-bottom left */
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* Ajustez la hauteur selon vos besoins */
+}
+
+.loginIcon {
+  margin-bottom: 20px; /* Espacement sous l'icône */
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 15px; /* Espacement entre les groupes de formulaire */
+}
+
+.form-control {
+  width: 300px; /* Largeur des champs de formulaire */
+  padding: 10px;
+  font-size: 16px;
+}
+
+.btn {
+  padding: 10px 20px;
+  font-size: 18px;
+}
+.login-container h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: #666;
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box; /* Pour inclure le padding et le border dans la largeur/hauteur */
+}
+
+.btn-primary {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.error-message {
+  color: red;
+  margin-top: 5px;
+}
+
