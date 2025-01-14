@@ -9,7 +9,8 @@
   - [3.2. Conteneurisation](#32-conteneurisation)
   - [3.3. Intégration Continue avec Jenkins](#33-intégration-continue-avec-jenkins)
 - [4. Instructions d’Utilisation](#4-instructions-dutilisation)
-- [5. Auteur](#5-auteur)
+- [5. Docker Configuration](#5-Docker-Configuration)
+- [6. Auteur](#6-auteur)
 ---
 
 
