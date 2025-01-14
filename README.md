@@ -105,7 +105,7 @@ Jenkins est configuré pour rationaliser le processus CI/CD en automatisant les 
 
 - **Nom** : Yasmine Hamed
 - **Entreprise** : ConvergeInnov
-- **Contact** : [yasmine.hamed@convergeinnov.com](mailto:yasmine.hamed@convergeinnov.com)
+- **Contact** : [yasmine.hamed@convergeinnov.com](mailto:yasmine.hamed@polytechnicien.tn)
 
 
 
