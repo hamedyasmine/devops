@@ -1,70 +1,177 @@
-# Getting Started with Create React App
+# README - Projet ReactJS ConvergeInnov
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+---
+## Table of Contents
+- [1.Introduction](#introduction)
+- [2.Prérequis](#Prérequis)
+- [3.Détails du Projet](#Détails du Projet)
+  - [3.1. Application](#3.1. Application)
+  - [3.2. Conteneurisation](#3.2. Conteneurisation)
+  - [3.3. Intégration Continue avec Jenkins](#3.3. Intégration Continue avec Jenkins)
+- [4. Instructions d’Utilisation](#4. Instructions d’Utilisation)
+  - [5. Auteur](#5. Auteur)
+---
 
-## Available Scripts
 
-In the project directory, you can run:
 
-### `npm start`
+## 1. Introduction
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Ce projet est une application web développée avec ReactJS pour l'entreprise **ConvergeInnov**. L'application suit une architecture **MVC** et est compatible avec la conteneurisation pour faciliter son déploiement et son intégration continue.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 2. Prérequis
 
-### `npm test`
+- **Node.js** (v14 ou supérieur)
+- **Docker** (v20 ou supérieur)
+- **Docker Compose** (v2 ou supérieur)
+- **Jenkins** pour l’intégration continue
+- Accès à un compte Docker Hub
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## 3. Détails du Projet
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 3.1. Application
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+L'application ReactJS inclut :
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Une interface utilisateur intuitive pour gérer les données de l'entreprise **ConvergeInnov**.
+- Une architecture **MVC** ou microservices pour assurer une séparation claire des responsabilités.
+- Compatibilité avec la conteneurisation pour un déploiement simplifié.
 
-### `npm run eject`
+### 3.2. Conteneurisation
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+L'application est empaquetée dans des conteneurs Docker pour garantir une exécution cohérente sur différents environnements.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+#### Livrables :
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+1. **Dockerfile(s)** : Un Dockerfile est fourni pour chaque service ou composant de l'application.
+2. **docker-compose.yml** : Permet de déployer et tester l'application en local avec un seul fichier.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+#### Exemple de Dockerfile :
 
-## Learn More
+```Dockerfile
+# Dockerfile pour l'application ReactJS
+FROM node:14
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+COPY . .
+RUN npm run build
+CMD ["npm", "start"]
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+#### Exemple de fichier docker-compose.yml :
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```yaml
+version: "3.8"
+services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+```
 
-### Code Splitting
+### 3.3. Intégration Continue avec Jenkins
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Un pipeline Jenkins est configuré pour automatiser les étapes de construction et distribution.
 
-### Analyzing the Bundle Size
+#### Jenkinsfile :
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```groovy
+pipeline {
+    agent any
 
-### Making a Progressive Web App
+    stages {
+        stage('Build') {
+            steps {
+                script {
+                    echo 'Construction de l’image Docker'
+                    sh 'docker build -t convergeinnov/app .'
+                }
+            }
+        }
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+        stage('Scan des vulnérabilités') {
+            steps {
+                script {
+                    echo 'Analyse de sécurité avec Trivy'
+                    sh 'trivy image convergeinnov/app'
+                }
+            }
+        }
 
-### Advanced Configuration
+        stage('Push sur Docker Hub') {
+            steps {
+                script {
+                    echo 'Push de l’image sur Docker Hub'
+                    sh 'docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD'
+                    sh 'docker tag convergeinnov/app $DOCKER_USERNAME/convergeinnov-app:latest'
+                    sh 'docker push $DOCKER_USERNAME/convergeinnov-app:latest'
+                }
+            }
+        }
+    }
+}
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+---
 
-### Deployment
+## 4. Instructions d’Utilisation
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+1. **Cloner le projet** :
 
-### `npm run build` fails to minify
+   ```bash
+   git clone https://github.com/hamedyasmine/devops.git
+   cd devops
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+2. **Lancer l'application localement avec Docker Compose** :
+
+   ```bash
+   docker-compose up --build
+   ```
+
+3. **Configurer Jenkins** :
+
+   - Ajouter le Jenkinsfile au projet.
+   - Configurer les crédentials Docker Hub dans Jenkins.
+
+4. **Déployer sur Docker Hub** :
+
+   - Une fois le pipeline exécuté avec succès, l'image sera disponible sur Docker Hub.
+
+---
+
+## 5. Docker Configuration
+
+### Dockerfile for Services
+
+Chaque microservice a son propre Dockerfile pour la conteneurisation. Ces Dockerfiles définissent l’environnement et les dépendances nécessaires au bon fonctionnement des services.
+
+### Docker-Compose
+
+Un fichier `docker-compose.yml` orchestre le démarrage de tous les microservices, MongoDB, et Kafka, garantissant une interaction fluide entre les conteneurs.
+
+### Jenkins Integration
+
+Jenkins est configuré pour rationaliser le processus CI/CD en automatisant les constructions, tests, et déploiements.
+
+- **Pipeline Configuration** : Les scripts Jenkinsfile définissent des pipelines multi-étapes, incluant les étapes de construction, test et déploiement.
+- **Integration with Kubernetes** : Jenkins s’intègre avec Kubernetes pour allouer dynamiquement des agents de construction et gérer les déploiements.
+- **Notification System** : Jenkins est configuré pour envoyer des notifications sur l’état des constructions ou déploiements via Slack ou email.
+
+---
+
+## 6. Auteur
+
+- **Nom** : Yasmine Hamed
+- **Entreprise** : ConvergeInnov
+- **Contact** : [yasmine.hamed@convergeinnov.com](mailto:yasmine.hamed@convergeinnov.com)
+
+
+
