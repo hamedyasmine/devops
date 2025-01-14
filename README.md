@@ -2,14 +2,14 @@
 
 ---
 ## Table of Contents
-- [1.Introduction](#introduction)
-- [2.Prérequis](#Prérequis)
-- [3.Détails du Projet](#Détails du Projet)
-  - [3.1. Application](#3.1. Application)
-  - [3.2. Conteneurisation](#3.2. Conteneurisation)
-  - [3.3. Intégration Continue avec Jenkins](#3.3. Intégration Continue avec Jenkins)
-- [4. Instructions d’Utilisation](#4. Instructions d’Utilisation)
-  - [5. Auteur](#5. Auteur)
+- [1. Introduction](#introduction)
+- [2. Prérequis](#prérequis)
+- [3. Détails du Projet](#détails-du-projet)
+  - [3.1. Application](#31-application)
+  - [3.2. Conteneurisation](#32-conteneurisation)
+  - [3.3. Intégration Continue avec Jenkins](#33-intégration-continue-avec-jenkins)
+- [4. Instructions d’Utilisation](#4-instructions-dutilisation)
+- [5. Auteur](#5-auteur)
 ---
 
 
@@ -47,76 +47,18 @@ L'application est empaquetée dans des conteneurs Docker pour garantir une exéc
 1. **Dockerfile(s)** : Un Dockerfile est fourni pour chaque service ou composant de l'application.
 2. **docker-compose.yml** : Permet de déployer et tester l'application en local avec un seul fichier.
 
-#### Exemple de Dockerfile :
 
-```Dockerfile
-# Dockerfile pour l'application ReactJS
-FROM node:14
-WORKDIR /app
-COPY package*.json ./
-RUN npm install
-COPY . .
-RUN npm run build
-CMD ["npm", "start"]
 ```
 
-#### Exemple de fichier docker-compose.yml :
 
-```yaml
-version: "3.8"
-services:
-  app:
-    build: .
-    ports:
-      - "3000:3000"
-    volumes:
-      - .:/app
-      - /app/node_modules
-    environment:
-      - NODE_ENV=development
-```
 
 ### 3.3. Intégration Continue avec Jenkins
 
 Un pipeline Jenkins est configuré pour automatiser les étapes de construction et distribution.
 
-#### Jenkinsfile :
 
-```groovy
-pipeline {
-    agent any
 
-    stages {
-        stage('Build') {
-            steps {
-                script {
-                    echo 'Construction de l’image Docker'
-                    sh 'docker build -t convergeinnov/app .'
-                }
-            }
-        }
 
-        stage('Scan des vulnérabilités') {
-            steps {
-                script {
-                    echo 'Analyse de sécurité avec Trivy'
-                    sh 'trivy image convergeinnov/app'
-                }
-            }
-        }
-
-        stage('Push sur Docker Hub') {
-            steps {
-                script {
-                    echo 'Push de l’image sur Docker Hub'
-                    sh 'docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD'
-                    sh 'docker tag convergeinnov/app $DOCKER_USERNAME/convergeinnov-app:latest'
-                    sh 'docker push $DOCKER_USERNAME/convergeinnov-app:latest'
-                }
-            }
-        }
-    }
-}
 ```
 
 ---
