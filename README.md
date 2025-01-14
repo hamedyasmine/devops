@@ -48,19 +48,14 @@ L'application est empaquetée dans des conteneurs Docker pour garantir une exéc
 2. **docker-compose.yml** : Permet de déployer et tester l'application en local avec un seul fichier.
 
 
-```
-
-
-
-### 3.3. Intégration Continue avec Jenkins
+ ### 3.3. Intégration Continue avec Jenkins :
 
 Un pipeline Jenkins est configuré pour automatiser les étapes de construction et distribution.
 
-```
 
----
 
-## 4. Instructions d’Utilisation
+
+### 4. Instructions d’Utilisation :
 
 1. **Cloner le projet** :
 
@@ -88,7 +83,7 @@ Un pipeline Jenkins est configuré pour automatiser les étapes de construction 
 
 ## 5. Docker Configuration
 
-### Dockerfile for Services
+### Dockerfile pour les services
 
 Chaque microservice a son propre Dockerfile pour la conteneurisation. Ces Dockerfiles définissent l’environnement et les dépendances nécessaires au bon fonctionnement des services.
 
@@ -96,13 +91,13 @@ Chaque microservice a son propre Dockerfile pour la conteneurisation. Ces Docker
 
 Un fichier `docker-compose.yml` orchestre le démarrage de tous les microservices, MongoDB, et Kafka, garantissant une interaction fluide entre les conteneurs.
 
-### Jenkins Integration
+### Integration de Jenkins 
 
 Jenkins est configuré pour rationaliser le processus CI/CD en automatisant les constructions, tests, et déploiements.
 
-- **Pipeline Configuration** : Les scripts Jenkinsfile définissent des pipelines multi-étapes, incluant les étapes de construction, test et déploiement.
-- **Integration with Kubernetes** : Jenkins s’intègre avec Kubernetes pour allouer dynamiquement des agents de construction et gérer les déploiements.
-- **Notification System** : Jenkins est configuré pour envoyer des notifications sur l’état des constructions ou déploiements via Slack ou email.
+- **Configuration des Pipelines** : Les scripts Jenkinsfile définissent des pipelines multi-étapes, incluant les étapes de construction, test et déploiement.
+- **Integration avec Kubernetes** : Jenkins s’intègre avec Kubernetes pour allouer dynamiquement des agents de construction et gérer les déploiements.
+- **Système de notification** : Jenkins est configuré pour envoyer des notifications sur l’état des constructions ou déploiements via Slack ou email.
 
 ---
 
