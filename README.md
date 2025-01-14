@@ -56,9 +56,6 @@ L'application est empaquetée dans des conteneurs Docker pour garantir une exéc
 
 Un pipeline Jenkins est configuré pour automatiser les étapes de construction et distribution.
 
-
-
-
 ```
 
 ---
